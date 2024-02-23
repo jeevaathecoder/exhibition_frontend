@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import {
   Table,
@@ -16,20 +18,18 @@ import {
   User,
   Pagination,
 } from "@nextui-org/react";
-import {PlusIcon} from "./PlusIcon";
 import {VerticalDotsIcon} from "./VerticalDotsIcon";
 import {SearchIcon} from "./SearchIcon";
 import {ChevronDownIcon} from "./ChevronDownIcon";
 import {columns, users, statusOptions} from "./data";
-import {capitalize} from "./utils";
+import {capitalize} from "@/component/adminhero/herotable/util";
 
 const statusColorMap = {
   active: "success",
-  paused: "danger",
-  vacation: "warning",
+  pendding: "danger",
 };
 
-const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
+const INITIAL_VISIBLE_COLUMNS = ["id","name", "mobile", "status", "actions"];
 
 export default function App() {
   const [filterValue, setFilterValue] = React.useState("");
@@ -94,7 +94,6 @@ export default function App() {
       case "name":
         return (
           <User
-            avatarProps={{radius: "lg", src: user.avatar}}
             description={user.email}
             name={cellValue}
           >
@@ -116,19 +115,13 @@ export default function App() {
         );
       case "actions":
         return (
-          <div className="relative flex justify-end items-center gap-2">
-            <Dropdown>
-              <DropdownTrigger>
-                <Button isIconOnly size="sm" variant="light">
-                  <VerticalDotsIcon className="text-default-300" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem>View</DropdownItem>
-                <DropdownItem>Edit</DropdownItem>
-                <DropdownItem>Delete</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+          <div className="relative flex items-center justify-center gap-2">
+            <Button color="success" className="h-8">
+              Accept
+            </Button> 
+            <Button color="danger" className="h-8">
+              Reject
+            </Button>
           </div>
         );
       default:
@@ -183,7 +176,7 @@ export default function App() {
           <div className="flex gap-3">
             <Dropdown>
               <DropdownTrigger className="hidden sm:flex">
-                <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
+                <Button className="bg-primary text-white h-12 " endContent={<ChevronDownIcon className="text-small" />} variant="flat">
                   Status
                 </Button>
               </DropdownTrigger>
@@ -202,30 +195,7 @@ export default function App() {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Dropdown>
-              <DropdownTrigger className="hidden sm:flex">
-                <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
-                  Columns
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu
-                disallowEmptySelection
-                aria-label="Table Columns"
-                closeOnSelect={false}
-                selectedKeys={visibleColumns}
-                selectionMode="multiple"
-                onSelectionChange={setVisibleColumns}
-              >
-                {columns.map((column) => (
-                  <DropdownItem key={column.uid} className="capitalize">
-                    {capitalize(column.name)}
-                  </DropdownItem>
-                ))}
-              </DropdownMenu>
-            </Dropdown>
-            <Button color="primary" endContent={<PlusIcon />}>
-              Add New
-            </Button>
+            
           </div>
         </div>
         <div className="flex justify-between items-center">

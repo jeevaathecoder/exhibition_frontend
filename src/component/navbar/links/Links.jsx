@@ -15,9 +15,9 @@ const Links = () => {
     ];
 
     const session = true;
-    const isAdmin = false;
+    const isAdmin = true;
     const isExhib = false;
-    const isUser = true;
+    const isUser = false;
 
     return(
         <div className={styles.links}>
