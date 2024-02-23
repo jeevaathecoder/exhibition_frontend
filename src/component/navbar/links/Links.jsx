@@ -15,9 +15,9 @@ const Links = () => {
     ];
 
     const session = true;
-    const isAdmin = true;
+    const isAdmin = false;
     const isExhib = false;
-    const isUser = false;
+    const isUser = true;
 
     return(
         <div className={styles.links}>
@@ -37,7 +37,7 @@ const Links = () => {
                     }
                     {
                         isUser && (
-                            <Link href="/admin" className={styles.signlinks}>User</Link>   
+                            <Link href="/user" className={styles.signlinks}>User</Link>   
                         )
                     }
                     

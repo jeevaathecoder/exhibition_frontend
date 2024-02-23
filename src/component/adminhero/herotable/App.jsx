@@ -18,11 +18,12 @@ import {
   User,
   Pagination,
 } from "@nextui-org/react";
-import {VerticalDotsIcon} from "./VerticalDotsIcon";
 import {SearchIcon} from "./SearchIcon";
 import {ChevronDownIcon} from "./ChevronDownIcon";
 import {columns, users, statusOptions} from "./data";
 import {capitalize} from "@/component/adminhero/herotable/util";
+import {CheckIcon} from "./CheckIcon";
+
 
 const statusColorMap = {
   active: "success",
@@ -93,12 +94,10 @@ export default function App() {
     switch (columnKey) {
       case "name":
         return (
-          <User
-            description={user.email}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
+          <div className="flex flex-col">
+            <p className="text-bold text-small capitalize">{cellValue}</p>
+            <p className="text-bold text-tiny capitalize text-default-400">{user.email}</p>
+          </div>
         );
       case "role":
         return (
@@ -116,12 +115,13 @@ export default function App() {
       case "actions":
         return (
           <div className="relative flex items-center justify-center gap-2">
-            <Button color="success" className="h-8">
+            <Button 
+              color="success" 
+              className="h-8"
+              startContent={<CheckIcon size={18} />}>
               Accept
             </Button> 
-            <Button color="danger" className="h-8">
-              Reject
-            </Button>
+          
           </div>
         );
       default:
@@ -175,8 +175,8 @@ export default function App() {
           />
           <div className="flex gap-3">
             <Dropdown>
-              <DropdownTrigger className="hidden sm:flex">
-                <Button className="bg-primary text-white h-12 " endContent={<ChevronDownIcon className="text-small" />} variant="flat">
+              <DropdownTrigger className=" sm:flex">
+                <Button className="bg-primary text-white h-14 px-auto" endContent={<ChevronDownIcon className="text-small" />} variant="flat">
                   Status
                 </Button>
               </DropdownTrigger>
@@ -241,14 +241,7 @@ export default function App() {
           total={pages}
           onChange={setPage}
         />
-        <div className="hidden sm:flex w-[30%] justify-end gap-2">
-          <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onPreviousPage}>
-            Previous
-          </Button>
-          <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onNextPage}>
-            Next
-          </Button>
-        </div>
+        
       </div>
     );
   }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
@@ -263,7 +256,6 @@ export default function App() {
         wrapper: "max-h-[382px]",
       }}
       selectedKeys={selectedKeys}
-      selectionMode="multiple"
       sortDescriptor={sortDescriptor}
       topContent={topContent}
       topContentPlacement="outside"
