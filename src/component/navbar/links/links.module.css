@@ -1,0 +1,11 @@
+.links{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.signlinks{
+    font-size: 15px;
+    margin: 10px;
+    font-weight: bold;
+    color: rgb(12, 12, 92);
+}
