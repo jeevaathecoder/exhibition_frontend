@@ -79,8 +79,6 @@ export default function CarouselApp(){
                       <div class="vertical-align-baseline">
                       <Button color="primary">Download Brochure</Button>
                       </div>
-
-
                     </div>
 
                   </div>
