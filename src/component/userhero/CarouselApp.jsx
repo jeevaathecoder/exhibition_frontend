@@ -80,6 +80,7 @@ export default function CarouselApp(){
                       <Button color="primary">Download Brochure</Button>
                       </div>
 
+
                     </div>
 
                   </div>
