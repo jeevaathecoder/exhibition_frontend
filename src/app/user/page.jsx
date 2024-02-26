@@ -1,10 +1,9 @@
-import App from "@/component/adminhero/herotable/App";
-import Carditem from "@/component/userhero/carditem";
+import Userhero from "@/component/userhero/Userhero";
 
 const UserPage = () => {
     return (
-      <div>
-        <Carditem />
+      <div className="flex justify-center items-center p-5 w-full" >
+        <Userhero />
       </div>
     );
   }

@@ -1,0 +1,13 @@
+.tablerow{
+    max-width: 40%;
+}
+
+.nextui-table-cell {
+    max-width: 200px; /* Adjust the value to your desired width */
+  }
+
+.customModalStyles {
+      width: "50%";
+      margin: "auto";
+      background-color: "#51E1ED";
+    } 
